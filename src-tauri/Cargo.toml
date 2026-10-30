@@ -1,0 +1,24 @@
+[package]
+name = "mama-receipts"
+version = "0.1.0"
+description = "Ethiopian Fiscal Cash Register Receipt Parser"
+authors = ["Mama Receipts"]
+edition = "2021"
+
+[lib]
+name = "mama_receipts_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+regex = "1.10"
+csv = "1.3"
+rust_xlsxwriter = "0.80"
+rusqlite = { version = "0.31", features = ["bundled"] }
+sha2 = "0.10"

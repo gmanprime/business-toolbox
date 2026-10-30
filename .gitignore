@@ -1,0 +1,20 @@
+# Rust / Cargo
+target/
+src-tauri/target/
+**/*.rs.bk
+
+# Excel / Office locks
+~$*
+*.tmp
+
+# Node / JS
+node_modules/
+dist/
+.next/
+out/
+
+# SQLite databases
+*.db
+*.db-wal
+*.db-shm
+*.sqlite

@@ -1,0 +1,21 @@
+TIN: 0016745893
+MENEN ASHENAFI G/WOLD
+YEKET TRADING
+ADDIS ABABA, S/C. YEKA W. 08
+H.NO NEW MELYA KU.03
+SHOLA MARKET AREA
+TEL:-0930013405
+00003216	N
+FS No.00000054
+06/05/2023                 12:52
+Switch  16A songru       *200.00
+SUBTOTAL:                *200.00
+-  -  -  -
+TXBL1                    *200.00
+TAX1 15%                  *30.00
+-  -  -  -
+TOTAL:   *230.00
+CASH                     *230.00
+ITEM#                          1
+E R C A
+HEK0105410

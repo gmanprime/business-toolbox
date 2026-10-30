@@ -1,0 +1,50 @@
+TIN: 0016745893
+MENEN ASHENAFI G/WOLD
+YEKET TRADING
+ADDIS ABABA, S/C. YEKA W. 08
+H.NO NEW MELYA KU.03
+SHOLA MARKET AREA
+TEL:-0930013405
+00009849	N
+SUMMARY FISCAL
+READING REP
+12/07/2023                 16:07
+READING                   A:0005
+Z:0008         ->         Z:0098
+09/04/2023     ->     07/07/2023
+SUMMARY  OF PERIOD
+TXBL1                 *33,347.43
+TXBL2                      *0.00
+TXBL3                      *0.00
+NOTXBL                     *0.00
+TAX1                   *5,002.14
+TAX2                       *0.00
+TAX3                       *0.00
+-  -  -  -
+SALES TL              *33,347.43
+TXBL TL               *33,347.43
+TAX TL                 *5,002.14
+-  -  -  -
+RFD TXBL1                  *0.00
+RFD TXBL2                  *0.00
+RFD TXBL3                  *0.00
+RFD NOTXBL                 *0.00
+RFD TAX1                   *0.00
+RFD TAX2                   *0.00
+RFD TAX3                   *0.00
+-  -  -  -
+RFD SALES TL               *0.00
+RFD TXBL TL                *0.00
+RFD TAX TL                 *0.00
+-  -  -  -
+ACCU.FS                 00000189
+12/07/2023                 11:18
+TTL FS                       177
+ACCU.NF                 00000009
+TTL NF                         7
+ACCU.RFD                00000000
+TTL RFD                        0
+TTL RESET                      0
+--------------------------------
+E R C A
+HEK0105410
