@@ -9,8 +9,8 @@ use crate::tools::registry::{get_available_tools, ToolDescriptor};
 
 /// Resolves the production-grade database path across Windows and Android.
 /// 
-/// In production, uses OS application data storage (`%APPDATA%/com.mama.receipts/mama_receipts.db` on Windows,
-/// internal sandbox storage on Android). Falls back to `./mama_receipts.db` if unmanaged.
+/// In production, uses OS application data storage (`%APPDATA%/com.fiscal.registertool/fiscal_register.db` on Windows,
+/// internal sandbox storage on Android). Falls back to `./fiscal_register.db` if unmanaged.
 pub fn resolve_database_path(
     app: Option<&AppHandle>,
     explicit_path: Option<String>,
@@ -24,16 +24,16 @@ pub fn resolve_database_path(
             if let Err(e) = std::fs::create_dir_all(&app_dir) {
                 eprintln!("Warning: Failed to create app_data_dir: {}", e);
             } else {
-                let db_path = app_dir.join("mama_receipts.db");
+                let db_path = app_dir.join("fiscal_register.db");
                 return Ok(db_path.to_string_lossy().to_string());
             }
         }
     }
 
-    Ok("mama_receipts.db".to_string())
+    Ok("fiscal_register.db".to_string())
 }
 
-/// Tool 0: List all available tools in the Mama Receipts Toolbox.
+/// Tool 0: List all available tools in the Fiscal Register Toolbox.
 #[tauri::command]
 pub fn list_tools() -> Vec<ToolDescriptor> {
     get_available_tools()

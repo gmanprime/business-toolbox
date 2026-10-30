@@ -2,8 +2,8 @@ use std::collections::HashSet;
 use std::fs;
 use std::path::{Path, PathBuf};
 
-use mama_receipts_lib::exporter::{export_excel, export_fs_csv, export_plu_csv};
-use mama_receipts_lib::parser::{
+use fiscal_register_lib::exporter::{export_excel, export_fs_csv, export_plu_csv};
+use fiscal_register_lib::parser::{
     parse_all_fs_receipts, parse_plu_x_reports, read_and_split_receipts, receipts_to_rows,
 };
 
@@ -132,16 +132,16 @@ fn test_full_pipeline_and_export() {
     let raw_text = fs::read_to_string(&source_path).expect("Failed to read source file");
     let plu_items = parse_plu_x_reports(&raw_text);
 
-    // Ground truth: 461 item rows
-    assert_eq!(fs_rows.len(), 461, "Expected exactly 461 rows for FS sales matching POC ground truth");
+    // Ground truth: 457 item rows (435 real items from 404 valid receipts + 22 void records; 4 spurious BY CHEQUE tender lines filtered)
+    assert_eq!(fs_rows.len(), 457, "Expected exactly 457 rows for FS sales matching audited ground truth");
 
     // Output directory for test
     let out_dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("target").join("test_output");
     fs::create_dir_all(&out_dir).expect("Failed to create test output dir");
 
-    let excel_path = out_dir.join("mama_receipts_output.xlsx");
-    let csv_fs_path = out_dir.join("mama_receipts_output.csv");
-    let csv_plu_path = out_dir.join("mama_x_reports_output.csv");
+    let excel_path = out_dir.join("fiscal_sales_output.xlsx");
+    let csv_fs_path = out_dir.join("fiscal_sales_output.csv");
+    let csv_plu_path = out_dir.join("fiscal_plu_output.csv");
 
     // Export Excel
     export_excel(&excel_path, &fs_rows, &plu_items).expect("Excel export should succeed");

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Mama Receipts - Fiscal Processing Engine',
+  title: 'Fiscal Register Tool - ERCA Cash Register Engine',
   description: 'High-performance Ethiopian Fiscal Cash Register Processing Engine & Toolbox',
 };
 

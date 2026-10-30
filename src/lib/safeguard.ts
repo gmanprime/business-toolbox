@@ -44,5 +44,5 @@ export async function checkDistributionSafeguard(): Promise<SafeguardStatus> {
 export async function verifyActivationKey(key: string): Promise<boolean> {
   if (!key || key.trim().length === 0) return false;
   // Stub for Phase 4 signature validation
-  return key.trim().toUpperCase().startsWith('MAMA-');
+  return key.trim().toUpperCase().startsWith('FISCAL-');
 }

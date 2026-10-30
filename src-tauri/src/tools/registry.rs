@@ -9,7 +9,7 @@ pub struct ToolDescriptor {
     pub version: String,
 }
 
-/// Returns the registry of tools available within the Mama Receipts Toolbox.
+/// Returns the registry of tools available within the Fiscal Register Toolbox.
 pub fn get_available_tools() -> Vec<ToolDescriptor> {
     vec![
         ToolDescriptor {

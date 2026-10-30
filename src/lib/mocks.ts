@@ -330,10 +330,10 @@ export function getMockImportResult(fileCount: number): BatchImportResult {
 
 export function getMockExportResult(outDir: string): ExportResult {
   return {
-    fs_rows_exported: 461,
+    fs_rows_exported: 457,
     plu_items_exported: 112,
-    excel_file: `${outDir}/mama_receipts_output.xlsx`,
-    fs_csv_file: `${outDir}/mama_receipts_output.csv`,
-    plu_csv_file: `${outDir}/mama_x_reports_output.csv`,
+    excel_file: `${outDir}/fiscal_sales_output.xlsx`,
+    fs_csv_file: `${outDir}/fiscal_sales_output.csv`,
+    plu_csv_file: `${outDir}/fiscal_plu_output.csv`,
   };
 }

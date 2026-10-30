@@ -2,10 +2,10 @@ use std::collections::HashSet;
 use std::fs;
 use std::path::{Path, PathBuf};
 
-use mama_receipts_lib::db::repository::{Database, ReceiptFilter};
-use mama_receipts_lib::tools::export_tool::export_stored_data;
-use mama_receipts_lib::tools::import_tool::import_receipt_files;
-use mama_receipts_lib::tools::registry::get_available_tools;
+use fiscal_register_lib::db::repository::{Database, ReceiptFilter};
+use fiscal_register_lib::tools::export_tool::export_stored_data;
+use fiscal_register_lib::tools::import_tool::import_receipt_files;
+use fiscal_register_lib::tools::registry::get_available_tools;
 
 fn get_source_file_path() -> PathBuf {
     let manifest_dir = Path::new(env!("CARGO_MANIFEST_DIR"));
@@ -42,7 +42,7 @@ fn test_database_import_and_double_hash_deduplication() {
     assert_eq!(stats_1.fs_sales_receipts, 426);
     assert_eq!(stats_1.void_receipts, 22);
     assert_eq!(stats_1.total_plu_items, 112);
-    assert_eq!(stats_1.total_items, 461); // 461 items in total across all 426 receipts
+    assert_eq!(stats_1.total_items, 457); // 457 items in total (435 real items + 22 void records; 4 BY CHEQUE filtered)
 
     // ── Second Import (Exact same file) ──
     let import_2 = import_receipt_files(&mut db, &[path_str]);
@@ -69,7 +69,7 @@ fn test_database_import_and_double_hash_deduplication() {
     assert_eq!(stats_2.fs_sales_receipts, 426);
     assert_eq!(stats_2.void_receipts, 22);
     assert_eq!(stats_2.total_plu_items, 112);
-    assert_eq!(stats_2.total_items, 461);
+    assert_eq!(stats_2.total_items, 457);
 
     // ── Verify 100% Sequential Integrity ──
     let all_fs = db.query_receipts(&ReceiptFilter {
@@ -135,7 +135,7 @@ fn test_database_filtering_and_partial_export() {
 
     let full_export = export_stored_data(&db, &out_dir, None, None, true, true)
         .expect("Full export from DB should succeed");
-    assert_eq!(full_export.fs_rows_exported, 461, "Should export 461 FS rows");
+    assert_eq!(full_export.fs_rows_exported, 457, "Should export 457 FS rows");
     assert_eq!(full_export.plu_items_exported, 112, "Should export 112 PLU items");
 
     // 6. Filtered export (e.g. only FS 1..=20)
@@ -156,6 +156,6 @@ fn test_database_filtering_and_partial_export() {
     ).expect("Filtered export from DB should succeed");
 
     assert!(filtered_export.fs_rows_exported >= 20);
-    assert!(filtered_out_dir.join("mama_receipts_output.xlsx").exists());
-    assert!(filtered_out_dir.join("mama_receipts_output.csv").exists());
+    assert!(filtered_out_dir.join("fiscal_sales_output.xlsx").exists());
+    assert!(filtered_out_dir.join("fiscal_sales_output.csv").exists());
 }

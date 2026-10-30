@@ -1,4 +1,4 @@
-# Mama Receipts (የእማማ ደረሰኝ) 🧾
+# Fiscal Register Tool (የፋይናንስ መመዝገቢያ መሣሪያ) 🧾
 
 > **High-Integrity Data Parsing, Extraction, and Reporting Engine for Ethiopian ERCA / Ministry of Revenues Certified Fiscal Cash Registers (Model: HEK0105410).**
 
@@ -11,7 +11,7 @@
 
 ## 📌 Overview
 
-**Mama Receipts** is a desktop and mobile fiscal data processing engine designed specifically for Ethiopian retail and enterprise cash registers. It ingests raw hardware dump text files (serial logs from models such as **HEK0105410**), reconstructs complex multi-item sales transactions, audits sequential fiscal numbering, and formats everything into standardized Ethiopian Ministry of Revenues (ERCA) compliant Excel workbooks and CSV files.
+**Fiscal Register Tool** is a desktop and mobile fiscal data processing engine designed specifically for Ethiopian retail and enterprise cash registers. It ingests raw hardware dump text files (serial logs from models such as **HEK0105410**), reconstructs complex multi-item sales transactions, audits sequential fiscal numbering, filters out non-item payment tenders (e.g. `BY CHEQUE`, `CASH`, `CARD`), and formats everything into standardized Ethiopian Ministry of Revenues (ERCA) compliant Excel workbooks and CSV files.
 
 ---
 
@@ -56,7 +56,7 @@ You can download the latest installers directly from the [GitHub Releases](https
 ## 🛠️ Tech Stack & Architecture
 
 ```
-                    Mama Receipts Application Architecture
+                    Fiscal Register Tool Application Architecture
                                       │
            ┌──────────────────────────┴──────────────────────────┐
            ▼                                                     ▼

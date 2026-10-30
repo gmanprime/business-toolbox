@@ -45,7 +45,7 @@ pub fn compute_receipt_hashes(
 
     // Secondary Hash: Semantic payload with domain separation salt
     let mut sec_hasher = Sha256::new();
-    sec_hasher.update(b"MAMA_FISCAL_V1|");
+    sec_hasher.update(b"FISCAL_REGISTER_V1|");
     sec_hasher.update(category.as_bytes());
     sec_hasher.update(b"|");
     sec_hasher.update(mrc.as_bytes());
@@ -95,7 +95,7 @@ pub fn compute_plu_hashes(item: &PluItem) -> (String, String) {
 
     // Secondary: Salted semantic hash
     let mut sec_hasher = Sha256::new();
-    sec_hasher.update(b"MAMA_PLU_V1|");
+    sec_hasher.update(b"FISCAL_PLU_V1|");
     sec_hasher.update(
         format!(
             "{}|{}|{}|{:.2}|{:.3}|{:.2}",

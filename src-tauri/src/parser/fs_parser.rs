@@ -25,6 +25,9 @@ static RE_SEPARATOR: LazyLock<Regex> =
 static RE_BUYERS_TIN: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"Buyer's TIN:").unwrap());
 static RE_ITEM_COUNT: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"ITEM#\s+(\d+)").unwrap());
 static RE_Z_REPORT: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"\bZ:\d+").unwrap());
+static RE_PAYMENT_METHOD: LazyLock<Regex> = LazyLock::new(|| {
+    Regex::new(r"^(CASH|BY\s+CHEQUE|CHEQUE|CHECK|CARD|CREDIT\s*CARD|C/CARD|CREDIT|TRANSFER|BANK\s+TRANSFER|TELEBIRR|MOBILE|VOUCHER|CHANGE:)\b").unwrap()
+});
 
 /// Parse money string like "2,608.65" or "*1,239.28" to f64.
 pub fn parse_money(s: &str) -> f64 {
@@ -62,19 +65,23 @@ pub fn parse_items_from_body(body_lines: &[String]) -> Vec<ReceiptItem> {
     while i < body_lines.len() {
         let line = &body_lines[i];
 
-        // Skip non-item control lines
+        // Structural separation: Items section strictly terminates when TOTAL: is reached
+        if line.starts_with("TOTAL:") {
+            break;
+        }
+
+        // Skip non-item control lines, tax breakdown, buyer metadata, and payment tender lines
         if RE_SEPARATOR.is_match(line)
             || RE_SUBTOTAL.is_match(line)
             || line.starts_with("TXBL")
             || line.starts_with("TAX")
-            || line.starts_with("TOTAL:")
-            || line.starts_with("CASH")
-            || line.starts_with("CHANGE:")
+            || line.starts_with("NOTXBL")
             || line.starts_with("ITEM#")
             || line.contains("E R C A")
             || line.contains("HEK0105410")
             || RE_BUYERS_TIN.is_match(line)
-            || line.starts_with("NOTXBL")
+            || line.starts_with("Buyer's Name:")
+            || RE_PAYMENT_METHOD.is_match(line)
             || line.trim().is_empty()
         {
             i += 1;
@@ -192,8 +199,9 @@ pub fn parse_fs_receipt(lines: &[String]) -> Option<FsReceipt> {
                 || RE_SEPARATOR.is_match(ln)
                 || RE_SUBTOTAL.is_match(ln)
                 || RE_BUYERS_TIN.is_match(ln)
+                || ln.starts_with("Buyer's Name:")
                 || ln.starts_with("TOTAL")
-                || ln.starts_with("CASH")
+                || RE_PAYMENT_METHOD.is_match(ln)
             {
                 continue;
             }

@@ -33,9 +33,9 @@ export function Header({ stats, safeguard, isTauriEnv, onRefresh }: HeaderProps)
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-bold text-slate-100 text-sm tracking-wide">MAMA RECEIPTS</span>
+              <span className="font-bold text-slate-100 text-sm tracking-wide">FISCAL REGISTER TOOL</span>
               <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-semibold">
-                v0.1.0-beta
+                v0.1.1
               </span>
               <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-sky-500/15 text-sky-400 border border-sky-500/30 font-semibold">
                 HEK0105410

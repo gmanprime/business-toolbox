@@ -1,12 +1,12 @@
 [package]
-name = "mama-receipts"
-version = "0.1.0"
+name = "fiscal-register-tool"
+version = "0.1.1"
 description = "Ethiopian Fiscal Cash Register Receipt Parser"
-authors = ["Mama Receipts"]
+authors = ["Fiscal Register Tool"]
 edition = "2021"
 
 [lib]
-name = "mama_receipts_lib"
+name = "fiscal_register_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]

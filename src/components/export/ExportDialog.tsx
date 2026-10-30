@@ -151,7 +151,7 @@ export function ExportDialog({
         <div className="flex gap-2">
           <input
             type="text"
-            placeholder="e.g. C:/Users/Mama/Documents/Fiscal_Exports"
+            placeholder="e.g. C:/Users/Admin/Documents/Fiscal_Exports"
             value={outDir}
             onChange={(e) => setOutDir(e.target.value)}
             className="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500 font-mono"

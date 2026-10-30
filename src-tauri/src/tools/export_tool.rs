@@ -56,19 +56,19 @@ pub fn export_stored_data(
     };
 
     if export_excel_format {
-        let excel_path = output_dir.join("mama_receipts_output.xlsx");
+        let excel_path = output_dir.join("fiscal_sales_output.xlsx");
         export_excel(&excel_path, &fs_rows, &plu_items)
             .map_err(|e| format!("Excel export error: {}", e))?;
         result.excel_file = Some(excel_path.to_string_lossy().to_string());
     }
 
     if export_csv_format {
-        let fs_csv_path = output_dir.join("mama_receipts_output.csv");
+        let fs_csv_path = output_dir.join("fiscal_sales_output.csv");
         export_fs_csv(&fs_csv_path, &fs_rows)
             .map_err(|e| format!("FS CSV export error: {}", e))?;
         result.fs_csv_file = Some(fs_csv_path.to_string_lossy().to_string());
 
-        let plu_csv_path = output_dir.join("mama_x_reports_output.csv");
+        let plu_csv_path = output_dir.join("fiscal_plu_output.csv");
         export_plu_csv(&plu_csv_path, &plu_items)
             .map_err(|e| format!("PLU CSV export error: {}", e))?;
         result.plu_csv_file = Some(plu_csv_path.to_string_lossy().to_string());
